@@ -2,6 +2,7 @@ import {
   LayoutDashboard,
   Package,
   MessageSquare,
+  MessagesSquare,
   Undo2,
   Bot,
   Settings,
@@ -19,6 +20,7 @@ export const dashboardNav: NavItem[] = [
   { href: "/dashboard/orders", label: "Siparişler", icon: Package },
   { href: "/dashboard/reviews", label: "Yorumlar", icon: MessageSquare },
   { href: "/dashboard/returns", label: "İade & İptal", icon: Undo2 },
+  { href: "/dashboard/conversations", label: "Konuşmalar", icon: MessagesSquare },
   { href: "/dashboard/automation", label: "Otomasyon", icon: Bot },
   { href: "/dashboard/settings", label: "Ayarlar", icon: Settings },
 ];
