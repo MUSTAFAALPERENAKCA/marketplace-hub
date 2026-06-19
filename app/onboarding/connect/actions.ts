@@ -7,6 +7,7 @@ import { db } from "@/db";
 import { marketplaceConnections } from "@/db/schema";
 import { requireOrgId } from "@/lib/auth";
 import { syncMarketplaceData } from "@/lib/marketplaces/sync";
+import { evaluateNewReturnRequests } from "@/lib/automation/engine";
 import { marketplaceProviders, type MarketplaceProvider } from "@/lib/marketplaces/types";
 
 export async function connectProvider(provider: MarketplaceProvider) {
@@ -20,6 +21,7 @@ export async function connectProvider(provider: MarketplaceProvider) {
   });
 
   await syncMarketplaceData(orgId, provider);
+  await evaluateNewReturnRequests(orgId);
   revalidatePath("/onboarding/connect");
 }
 

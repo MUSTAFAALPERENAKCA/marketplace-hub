@@ -6,6 +6,7 @@ import { db } from "@/db";
 import { marketplaceConnections } from "@/db/schema";
 import { requireOrgId } from "@/lib/auth";
 import { syncMarketplaceData } from "@/lib/marketplaces/sync";
+import { evaluateNewReturnRequests } from "@/lib/automation/engine";
 
 /** Org'a bağlı tüm pazaryerlerinden yeni veri çeker. */
 export async function syncAllConnectedMarketplaces() {
@@ -19,6 +20,8 @@ export async function syncAllConnectedMarketplaces() {
   for (const connection of connections) {
     await syncMarketplaceData(orgId, connection.provider);
   }
+
+  await evaluateNewReturnRequests(orgId);
 
   await db
     .update(marketplaceConnections)
