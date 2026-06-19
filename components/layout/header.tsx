@@ -1,3 +1,4 @@
+import { OrganizationSwitcher, UserButton } from "@clerk/nextjs";
 import { Badge } from "@/components/ui/badge";
 
 export function Header({ title, description }: { title: string; description?: string }) {
@@ -9,9 +10,13 @@ export function Header({ title, description }: { title: string; description?: st
           <p className="text-sm text-muted-foreground">{description}</p>
         )}
       </div>
-      <Badge variant="outline" className="gap-1">
-        Mock veri modu
-      </Badge>
+      <div className="flex items-center gap-4">
+        <Badge variant="outline" className="gap-1">
+          Mock veri modu
+        </Badge>
+        <OrganizationSwitcher afterSelectOrganizationUrl="/dashboard" />
+        <UserButton />
+      </div>
     </div>
   );
 }
